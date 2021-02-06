@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+:root {
+    --background: #444;
+    --main-text: #aaa;
+    --header: #222;
+    --button: #32a;
+    --button-text: #99f;
+    --button-hover: #43d;
+
+}
+
+
+h1 {
+    background-color: var(--header);
+    text-align:center;
+    color: var(--main-text);
+    padding: 1rem 0;
+
+}
+#button-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.button {
+    background-color: var(--button);
+    border: 0;
+    padding: 1rem;
+    margin: auto;
+    border-radius: 10px;
+    color: var(--button-text);
+    cursor: pointer;
+
+}
+
+.button:hover {
+    background-color: var(--button-hover);
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input {
+    margin: 0.5rem 0;
+}
+
+.label-input input {
+    width: 100%;
+    padding: 1rem;
+
+}
+
+.label-input label {
+    display: block;
+}
+
+.form-button {
+    width: 5rem;
+}
+
+.form-button-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+#checkbox-div {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.book-card {
+    border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+
+
+.book-card-header-detail {
+    width: 15%;
+    border-right: 1px solid black;
+    font-weight: bold;   
+    
+    }
+
+.book-card-author, .book-card-title, .book-card-pages {
+    display: flex;
+}
+
+.book-card-pages {
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.book-card-read-div {
+    display: flex;
+    align-items: center;
+}
+.book-card-button {
+    padding: 0.5rem;
+    width: 5rem;
+    text-align: center;
+    color: red;
+}

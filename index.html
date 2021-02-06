@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Library!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <h1>Library - Add Books Here!</h1>
+            </header>
+            <section id="button-section">
+                <button class="button" id="add-new-book-button">Add New Book</button>
+            </section>
+            <section id="form-section" class="hidden">
+                <form action="#" class="form">
+                    <div class="label-input">
+                        <label for="book-author">Author</label>
+                        <input id="book-author" type="text" placeholder="Enter the author of the book" >
+                    </div>
+
+                    <div class="label-input">
+                        <label for="book-title">Title</label>
+                        <input id="book-title" type="text" placeholder="Enter the title of the book" autofocus >
+                    </div>
+
+                    <div class="label-input">
+                        <label for="pages">Number of Pages</label>
+                        <input id="pages" type="number" placeholder="How many pages does the book have?" >
+                    </div>
+
+                    <div class="label-input" id="checkbox-div">
+                        <label for="book-read">Completed?</label>
+                        <input id="book-read" type="checkbox" name="read">
+                    </div>
+                    <div class="form-button-group">
+                        <button class="button form-button" type="submit" id="submit-button">Submit</button>
+                        <button class="button form-button" type="reset" id="reset-button">Reset</button>                  
+                    </div>
+
+                </form>
+            </section>
+            <section id="saved-books">
+                <div id="books-grid">
+                    <div class="book-card" data-key="1234">
+                        <div class="book-card-author">
+                            <div class="book-card-header-detail">Author:</div>
+                            <div class="book-card-header-content">James Clear</div>
+                        </div>
+                        <div class="book-card-title">
+                            <div class="book-card-header-detail">Title:</div>
+                            <div class="book-card-header-content">Atomic Habits</div>
+                        </div>
+
+                        <div class="book-card-pages">
+                            <div class="book-card-header-detail">Pages:</div>
+                            <div class="book-card-header-content">320</div>
+                        </div>
+
+                        <div class="book-card-read-div">    
+                            <button class="button book-card-button book-card-read">Read</button>
+                            <button class="button book-card-button book-card-remove">Remove</button>
+                    </div>
+                </div>
+            </section>            
+
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
