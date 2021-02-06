@@ -18,7 +18,7 @@ form.addEventListener("submit", addNewBook)
 // Building functions
 
 function addNewBook() {
-
+    event.preventDefault();
     let id = Date.now()
     let newAuthor = authorTitleField.value;
     let newTitle = bookTitleField.value;
