@@ -9,20 +9,23 @@ let submitNewBook = document.querySelector("#submit-button")
 let booksGrid = document.querySelector("#books-grid");
 let form = document.querySelector("form")
 let bookCompletedButton = document.querySelector(".book-card-read")
+let removeBookButton = document.querySelector(".book-card-remove")
+
 
 let books = []
 
 //Adding event listeners
 
 form.addEventListener("submit", addNewBook)
-bookCompletedButton.addEventListener("click", bookCompleted)
+bookCompletedButton.addEventListener("click", bookCompleted);
+removeBookButton.addEventListener("click", removeBook)
+
 
 // Building functions
 
 function addNewBook() {
     event.preventDefault();
     booksGrid.innerHTML = "";
-
 
     let id = Date.now()
     let newAuthor = authorTitleField.value;
@@ -37,8 +40,20 @@ function addNewBook() {
         read: bookRead
     }
     books.push(newBook);
+    console.log(newBook)
 
+    generateList();
+/*
+    bookTitleField.value = "";
+    authorTitleField.value = "";
+    pagesField.value = "";
+    checkbox.checked = false;
+*/
+}
 
+//Function to create book list/grid
+
+function generateList() {
     //Read the array and create the card for each element
 
     books.forEach(book=> {
@@ -62,10 +77,10 @@ function addNewBook() {
        // let authorText = document.createTextNode(newAuthor);
 
        // let titleHeader = "Title:";
-        let titleText = document.createTextNode(newTitle);
+        let titleText = document.createTextNode(book.title);
 
         //let pagesHeader = "Pages:"
-        let pagesText = document.createTextNode(newPages)
+        let pagesText = document.createTextNode(book.pages)
 
         readButton.textContent = "Read"
         removeButton.textContent = "Remove"
@@ -73,13 +88,13 @@ function addNewBook() {
         // Append all the constituent elements
 
         bookCardAuthorDetail.textContent ="Author:"
-        bookCardAuthorContent.textContent = newAuthor
+        bookCardAuthorContent.textContent = book.author
 
         bookCardTitleDetail.textContent = "Title:"
-        bookCardTitleContent.textContent = newTitle;
+        bookCardTitleContent.textContent = book.title;
 
         bookCardPagesDetail.textContent = "Pages:";
-        bookCardPagesContent.textContent = newPages;
+        bookCardPagesContent.textContent = book.pages;
         
 
         //Append to higher divs
@@ -103,11 +118,12 @@ function addNewBook() {
         bookCard.appendChild(bookCardPages)
         bookCard.appendChild(bookCardButtonDiv);
 
-        //Adding classes
+        //Adding classes and events
 
         bookCard.classList.add("book-card")
+        bookCard.setAttribute("data-key", book["data-key"])
         bookCardAuthor.classList.add("book-card-author")
-        bookCardTitle.classList.add("book-card-title")
+        bookCardTitle.classList.add("book-card-title")  
         bookCardPages.classList.add("book-card-pages");
         bookCardButtonDiv.classList.add("book-card-read-div")
 
@@ -123,12 +139,15 @@ function addNewBook() {
         readButton.classList.add("button")
         readButton.classList.add("book-card-button")
         readButton.classList.add("book-card-read")
+        readButton.addEventListener("click", bookCompleted)
 
         removeButton.classList.add("button")
         removeButton.classList.add("book-card-button")
         removeButton.classList.add("book-card-remove")
+        removeButton.addEventListener("click", removeBook)
 
-        if(bookRead) {
+
+        if(book.read) {
             bookCard.classList.add("read")
         }
 
@@ -136,15 +155,10 @@ function addNewBook() {
         //Append book card to book card grid
 
         booksGrid.appendChild(bookCard);
-        console.log(newBook)
     
 
 
     })
-    bookTitleField.value = "";
-    authorTitleField.value = "";
-    pagesField.value = "";
-    checkbox.checked = false;
 
 }
 
@@ -154,15 +168,21 @@ function bookCompleted() {
     event.target.parentElement.parentElement.classList.toggle("read")
 }
 
-function removeBook() {
+//Function to remove books
+function removeBook(event) {
     //Clear book list
+
     booksGrid.innerHTML = "";
 
 
-    //loop through array and filter out the object with the data-key that matches the data-key of the event target
-    books.filter(book=> {
-        event.target.parentElement.parentElement["data-key"] !== book["data-key"]
+    books = books.filter(book=> {
+       return event.target.parentElement.parentElement.attributes["data-key"].value != book["data-key"]
     })
 
+    console.log(books)
+
     // Re-draw
+    generateList()
+
 }
+

@@ -19,6 +19,10 @@ input[type=number] {
 
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     background-color: var(--background)
 }
