@@ -8,34 +8,35 @@ let checkbox = document.querySelector("#book-read");
 let submitNewBook = document.querySelector("#submit-button")
 let booksGrid = document.querySelector("#books-grid");
 let form = document.querySelector("form")
+let bookCompletedButton = document.querySelector(".book-card-read")
 
 let books = []
 
 //Adding event listeners
 
 form.addEventListener("submit", addNewBook)
+bookCompletedButton.addEventListener("click", bookCompleted)
 
 // Building functions
 
 function addNewBook() {
     event.preventDefault();
+    booksGrid.innerHTML = "";
+
+
     let id = Date.now()
     let newAuthor = authorTitleField.value;
     let newTitle = bookTitleField.value;
     let newPages = pagesField.value;
     let bookRead = event.target[3].checked === true ? true : false;
     let newBook = {
-        id: Date.now(),
+        "data-key": Date.now(),
         author: newAuthor,
         title: newTitle,
         pages: newPages,
         read: bookRead
     }
     books.push(newBook);
-    console.log(newBook);
-    console.log(books)
-
-    //Clear books grid
 
 
     //Read the array and create the card for each element
@@ -127,15 +128,41 @@ function addNewBook() {
         removeButton.classList.add("book-card-button")
         removeButton.classList.add("book-card-remove")
 
+        if(bookRead) {
+            bookCard.classList.add("read")
+        }
+
       
         //Append book card to book card grid
 
-        booksGrid.appendChild(bookCard)
+        booksGrid.appendChild(bookCard);
+        console.log(newBook)
     
 
 
     })
+    bookTitleField.value = "";
+    authorTitleField.value = "";
+    pagesField.value = "";
+    checkbox.checked = false;
+
+}
+
+//Function to mark book as read
+
+function bookCompleted() {
+    event.target.parentElement.parentElement.classList.toggle("read")
+}
+
+function removeBook() {
+    //Clear book list
+    booksGrid.innerHTML = "";
 
 
+    //loop through array and filter out the object with the data-key that matches the data-key of the event target
+    books.filter(book=> {
+        event.target.parentElement.parentElement["data-key"] !== book["data-key"]
+    })
 
+    // Re-draw
 }
