@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+
 input[type=number] {
     -moz-appearance: textfield;
   }
@@ -15,7 +17,13 @@ input[type=number] {
     --button: #227;
     --button-text: #99f;
     --button-hover: #43d;
-    --book-completed: #3d2;
+    --remove-button: #812;
+    --remove-button-hover: #b12;
+    --remove-button-text: #f22;
+    --book-card-background: #222;
+    --book-info-background: #55a;
+    --book-completed-border: #1a1;
+    --book-completed-info: #050;
 
 }
 
@@ -24,7 +32,10 @@ input[type=number] {
 }
 
 body {
-    background-color: var(--background)
+    background-color: var(--background);
+    font-family: 'Lexend Mega', sans-serif;
+    font-size: 0.8rem;
+    line-height: 2rem;
 }
 
 
@@ -50,11 +61,21 @@ h1 {
     border-radius: 10px;
     color: var(--button-text);
     cursor: pointer;
+    transition: 0.2s;
 
 }
 
 .button:hover {
     background-color: var(--button-hover);
+}
+
+.book-card-remove, #form-close-button {
+    background-color: var(--remove-button);
+    color: var(--remove-button-text)
+}
+
+.book-card-remove:hover, #form-close-button:hover {
+    background-color: var(--remove-button-hover);
 }
 
 
@@ -94,36 +115,68 @@ h1 {
     justify-content: space-between;
 }
 
+#books-grid {
+    margin-top: 1rem;
+}
+
 .book-card {
     border: 3px solid #000;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     margin-top: 1rem;
-    
+    border-radius: 15px;
+    width: 95%;
+    margin: auto;
+    background-color: var(--book-card-background);
+    overflow: hidden;
+    margin-top: 1rem;      
 }
 
 
-
-.book-card-header-detail {
-    width: 15%;
-    border-right: 1px solid black;
-    font-weight: bold;   
-    
-    }
 
 .book-card-author, .book-card-title, .book-card-pages {
     display: flex;
+    width: 100%;
+    background-color: var(--book-info-background);
+
+    
 }
+
+.book-card-author {
+    margin-top: 5%;
+}
+
+
+.book-card-header-detail {
+    font-weight: bold;  
+    
+    }
+
+.book-card-title {
+}
+
+.book-card-header-detail, .book-card-header-content {
+    width: 100%;
+}
+
 
 .book-card-pages {
     border-bottom: 1px solid black;
     margin-bottom: 1rem;
+
 }
 
 .book-card-read-div {
     display: flex;
     align-items: center;
+    background-color: var(--book-card-background);
+    position: relative;
+    bottom: 0
+
+    
 }
+
 .book-card-button {
     padding: 0.5rem;
     width: 5rem;
@@ -131,5 +184,37 @@ h1 {
 }
 
 .read {
-    border: 3px solid var(--book-completed)
+    border: 3px solid var(--book-completed-border);
+    
+}
+
+
+/* Tablet media query time*/
+
+@media only screen and (min-width: 768px){
+
+    #books-grid{
+        display: grid;
+        grid-template: repeat(2, 1fr) / repeat(2, 1fr)
+    }
+
+   
+}
+
+@media only screen and (min-width: 1024px){
+    #books-grid{
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(4, 1fr)
+    }
+
+    #form-section {
+        width: 70%;
+        margin: auto;
+        border: 10px solid #000;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+
+
 }

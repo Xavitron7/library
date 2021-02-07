@@ -5,30 +5,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet"> 
     </head>
     <body>
         <div id="container">
             <header>
-                <h1>Library - Add Books Here!</h1>
+                <h1>Library App</h1>
             </header>
             <section id="button-section">
                 <button class="button" id="add-new-book-button">Add New Book</button>
             </section>
-            <section id="form-section">
+            <section id="form-section" class="hidden">
                 <form action="#" class="form">
                     <div class="label-input">
                         <label for="book-author">Author</label>
-                        <input id="book-author" type="text" placeholder="Enter the author of the book" autofocus>
+                        <input id="book-author" type="text" placeholder="Enter the author of the book" maxlength="30" autofocus required>
                     </div>
 
                     <div class="label-input">
                         <label for="book-title">Title</label>
-                        <input id="book-title" type="text" placeholder="Enter the title of the book" >
+                        <input id="book-title" type="text" placeholder="Enter the title of the book" maxlength="50" required>
                     </div>
 
                     <div class="label-input">
                         <label for="pages">Number of Pages</label>
-                        <input id="pages" type="number" placeholder="How many pages does the book have?" >
+                        <input id="pages" type="number" max="5000" placeholder="How many pages does the book have?" required >
                     </div>
 
                     <div class="label-input" id="checkbox-div">
@@ -37,7 +39,9 @@
                     </div>
                     <div class="form-button-group">
                         <button class="button form-button" type="submit" id="submit-button">Submit</button>
-                        <button class="button form-button" type="reset" id="reset-button">Reset</button>                  
+                        <button class="button form-button" type="reset" id="reset-button">Reset</button>
+                        <button class="button form-button" type="button" id="form-close-button">Close</button>                 
+                  
                     </div>
 
                 </form>

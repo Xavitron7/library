@@ -1,6 +1,6 @@
 //Selecting the interactive page elements
 
-let newBookButton = document.querySelector("#new-book-button");
+let newBookButton = document.querySelector("#add-new-book-button");
 let bookTitleField = document.querySelector("#book-title");
 let authorTitleField = document.querySelector("#book-author");
 let pagesField = document.querySelector("#pages");
@@ -9,7 +9,10 @@ let submitNewBook = document.querySelector("#submit-button")
 let booksGrid = document.querySelector("#books-grid");
 let form = document.querySelector("form")
 let bookCompletedButton = document.querySelector(".book-card-read")
-let removeBookButton = document.querySelector(".book-card-remove")
+let removeBookButton = document.querySelector(".book-card-remove");
+let formSection = document.querySelector("#form-section");
+let closeFormButton = document.querySelector("#form-close-button");
+
 
 
 let books = []
@@ -18,7 +21,9 @@ let books = []
 
 form.addEventListener("submit", addNewBook)
 bookCompletedButton.addEventListener("click", bookCompleted);
-removeBookButton.addEventListener("click", removeBook)
+removeBookButton.addEventListener("click", removeBook);
+newBookButton.addEventListener("click", displayForm)
+closeFormButton.addEventListener("click", closeForm)
 
 
 // Building functions
@@ -43,12 +48,12 @@ function addNewBook() {
     console.log(newBook)
 
     generateList();
-/*
+
     bookTitleField.value = "";
     authorTitleField.value = "";
     pagesField.value = "";
     checkbox.checked = false;
-*/
+
 }
 
 //Function to create book list/grid
@@ -186,3 +191,12 @@ function removeBook(event) {
 
 }
 
+//All these functions do is change the display status of the form 
+
+function displayForm() {
+    formSection.classList.remove("hidden")
+}
+
+function closeForm() {
+    formSection.classList.add("hidden")
+}
